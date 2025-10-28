@@ -1,0 +1,117 @@
+# ============================================
+# PYTHON
+# ============================================
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+
+# Virtual Environments
+.venv/
+.venv1/
+env/
+venv/
+ENV/
+
+# ============================================
+# DATA FILES (Don't commit large data!)
+# ============================================
+data/raw/*.csv
+data/raw/*.parquet
+data/processed/*.parquet
+data/processed/*.csv
+*.h5
+*.hdf5
+
+# ============================================
+# MODELS (Don't commit trained models!)
+# ============================================
+data/models/*.pkl
+data/models/*.joblib
+data/models/*.h5
+*.pkl
+*.joblib
+
+# ============================================
+# LOGS
+# ============================================
+*.log
+logs/
+*.log.*
+
+# ============================================
+# JUPYTER NOTEBOOKS
+# ============================================
+.ipynb_checkpoints/
+*.ipynb
+jupyter_notebooks/.ipynb_checkpoints/
+
+# ============================================
+# IDE / EDITORS
+# ============================================
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# ============================================
+# OS FILES
+# ============================================
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# ============================================
+# ENVIRONMENT / SECRETS
+# ============================================
+.env
+.env.local
+.env.*.local
+*.env
+
+# Keep .env.example (template)
+!.env.example
+
+# ============================================
+# STREAMLIT
+# ============================================
+.streamlit/secrets.toml
+
+# ============================================
+# REDIS / DATABASES
+# ============================================
+dump.rdb
+*.rdb
+*.db
+*.sqlite
+
+# ============================================
+# BUILD / DISTRIBUTION
+# ============================================
+build/
+dist/
+*.egg-info/
+.eggs/
+
+# ============================================
+# TESTING
+# ============================================
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+
+# ============================================
+# TEMPORARY FILES
+# ============================================
+tmp/
+temp/
+*.tmp
+*.bak
+*.swp
