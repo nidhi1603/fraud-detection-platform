@@ -1,0 +1,114 @@
+# ============================================
+# FRAUD DETECTION PLATFORM - CONFIG
+# ============================================
+
+project:
+  name: "Fraud Detection Platform"
+  version: "1.0.0"
+  description: "Real-time fraud detection using ML and streaming"
+
+# ============================================
+# DATA GENERATION
+# ============================================
+data_generation:
+  num_users: 1000
+  num_fraudsters: 50
+  transactions_per_user: 100
+  fraud_rate: 0.05
+  batch_size: 10000
+  output_format: "parquet"
+  seed: 42
+
+# ============================================
+# STREAMING
+# ============================================
+streaming:
+  provider: "redis"
+  host: "localhost"
+  port: 6379
+  stream_name: "transactions"
+  consumer_group: "fraud-detection-group"
+  batch_size: 100
+  timeout_ms: 1000
+  max_retries: 3
+
+# ============================================
+# STORAGE
+# ============================================
+storage:
+  analytics_db: "duckdb"
+  graph_db: "networkx"
+  parquet_compression: "snappy"
+  save_raw: true
+  save_processed: true
+
+# ============================================
+# MACHINE LEARNING
+# ============================================
+ml_model:
+  algorithm: "xgboost"
+  hyperparameters:
+    n_estimators: 100
+    max_depth: 6
+    learning_rate: 0.1
+    scale_pos_weight: 19
+    random_state: 42
+
+  training:
+    test_size: 0.2
+    validation_size: 0.1
+    cross_validation_folds: 5
+
+  threshold:
+    fraud_probability: 0.7
+
+# ============================================
+# FEATURES
+# ============================================
+features:
+  amount_based:
+    - amount
+    - amount_log
+    - amount_z_score
+
+  time_based:
+    - hour
+    - day_of_week
+    - is_weekend
+    - is_night
+
+  velocity_based:
+    - txn_count_1h
+    - txn_count_24h
+    - total_amount_1h
+
+  location_based:
+    - distance_from_home
+    - is_foreign_country
+
+# ============================================
+# DASHBOARD
+# ============================================
+dashboard:
+  framework: "streamlit"
+  port: 8501
+  title: "Fraud Detection Dashboard"
+  refresh_rate_seconds: 5
+  theme: "light"
+
+  metrics:
+    - total_transactions
+    - fraud_detected
+    - fraud_rate
+    - amount_saved
+    - false_positives
+
+# ============================================
+# LOGGING
+# ============================================
+logging:
+  level: "INFO"
+  format: "json"
+  file: "./logs/fraud_detection.log"
+  rotation: "1 day"
+  retention: "30 days"
